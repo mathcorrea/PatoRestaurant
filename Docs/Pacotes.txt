@@ -1,0 +1,51 @@
+- EntityFrameworkCore - Banco de Dados
+- IdentityFrameworkCore - Identificação e Autorização de Usuário
+
+Comandos:
+
+1. dotnet new mvc -f net6.0 --auth Individual --use-local-db                       ( --name )
+    excluir migrations
+    - patorestaurant = disable
+
+2. dotnet add package Pomelo.EntityFrameworkCore.MySql --version 6.0.2
+    - program.cs = linha 10 (usemysql ...) e false
+    - appsettings.json = linha 3 (banco de dados)
+
+    Teste de ferramenta de migração:
+        dotnet ef = unicornio
+    
+    Intalar ferramenta de migração:
+        dotnet tool install --global dotnet-ef
+
+    Criar uma migração:
+        ! XAMPP ATIVADO !
+        I -  Primeiro: dotnet build
+        II - Criar Migração: dotnet ef migrations add NOME-DA-MIGRAÇÃO
+        dotnet ef migrations add Criar-Banco
+        III - Atualizar BD: dotnet ef database update
+
+3. ctrl+H e adicionar "~/" no começo dos href e src da pagina _layout.cshtml
+
+4. Index.cshtml ~/ nos src/images e adicionar viewdata
+
+5. _layout.cshtml mudar em <li> e <li class> os href pra asp-action (deixar o class)
+
+REFAZER MIGRATION: dotnet ef database update
+
+6. homecontroller criar um public de cada botão
+
+7. na pasta home criar um cshtml de cada botão com viewdata
+
+8. copiar do docs/patomaster do arquivo about linha 187 a 397 e colar no about.cshtml dps da viewdata
+
+9. trocar os url(images do about.cshtml por url(../image
+    trocar os src="images para src="~/images
+
+9. copiar do docs/patomaster o arquivo blog de 187 a 737 (até chegar no footer)
+
+10. fazer o mesmo que o 8 e 9 (copiar de title page até o footer e alterar os url com .. e src com ~/
+
+11. no layout adicionar asp-action="Index" asp-controller="Home" no href da linha 44
+
+12. na gallery trocar o href="images pra ~/
+    gallery.cshtml linha 150

@@ -1,0 +1,15 @@
+Layout.cshtml - usar o Index.html
+    - Copiar e colar as linhas de 1 a 182
+    - Escrever na linha 184:
+        @RenderBody()
+    - Copiar e colar as linhas de 1127 a 1351
+    240 e 260 = @@ ou apagar @
+
+    - Escrever na linha antes do body:
+        @await RenderSectionAsync("Scripts", required: false)
+
+Home Index.cshtml
+    - Apagar o html existente
+    - Copiar e colar as linhas de 184 a 1125
+
+
