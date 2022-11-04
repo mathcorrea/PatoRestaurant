@@ -24,7 +24,7 @@ namespace PatoRestaurant.Models
         [Column(TypeName = "decimal(10,2)")]
         [Required(ErrorMessage = "Informe o seu {0}")]
         [DisplayFormat(DataFormatString = "{0:N2}", ApplyFormatInEditMode = true)]
-        public string Price { get; set; }
+        public decimal Price { get; set; }
 
         [Display(Name = "Data de Cadastro")]
         public DateTime CreatedDate { get; set; } = DateTime.Now;

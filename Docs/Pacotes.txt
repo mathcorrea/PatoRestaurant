@@ -49,3 +49,13 @@ REFAZER MIGRATION: dotnet ef database update
 
 12. na gallery trocar o href="images pra ~/
     gallery.cshtml linha 150
+
+13. para realizar um scaffolding do identity
+-- passo opcional:
+    dotnet aspnet-codegenerator identity -h
+
+-- instalar o pacote design
+    dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
+
+-- extrair do pacote identity as paginas
+    dotnet aspnet-codegenerator identity -dc (Primeiro nome do projeto).Data
