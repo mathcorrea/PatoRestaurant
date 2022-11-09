@@ -58,4 +58,5 @@ REFAZER MIGRATION: dotnet ef database update
     dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 
 -- extrair do pacote identity as paginas
-    dotnet aspnet-codegenerator identity -dc (Primeiro nome do projeto).Data
+    dotnet aspnet-codegenerator identity -dc nome-do-projeto.Data.ApplicationDbContext
+    dotnet aspnet-codegenerator identity -dc  PatoRestaurant.Data.ApplicationDbContext --files "Account.AccessDenied;Account.Login;Account.Logout;Account.Register"

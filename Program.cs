@@ -10,7 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
-builder.Services.AddDatabaseDeveloperPageExceptionFilter(); // erros de desenvolvimento, tirar quando o site estiver finalizado
+
+// builder.Services.AddDatabaseDeveloperPageExceptionFilter(); // erros de desenvolvimento, tirar quando o site estiver finalizado
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<ApplicationDbContext>()
