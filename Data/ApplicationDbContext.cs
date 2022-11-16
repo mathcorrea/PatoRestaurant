@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace PatoRestaurant.Data;
 
@@ -20,6 +21,52 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
+
+        #region Seed Roles
+        
+        List<IdentityRole> listRoles = new()
+        {
+            new IdentityRole{
+                Id = Guid.NewGuid().ToString(),
+                Name = "Administrador",
+                NormalizedName = "ADMINISTRADOR"
+            },
+             new IdentityRole{
+                Id = Guid.NewGuid().ToString(),
+                Name = "Usuário",
+                NormalizedName = "USUÁRIO"
+            },
+        };
+        builder.Entity<IdentityRole>().HasData(listRoles);
+        #endregion
+
+        #region Seed User - Administrador
+        var userId = Guid.NewGuid().ToString();
+        var hash = new PasswordHasher<ApplicationUser>();
+        builder.Entity<ApplicationUser>().HasData(
+                new ApplicationUser(){
+                    Id = userId,
+                    Name = "Matheus Correa",
+                    UserName = "admin@patorestaurant.com",
+                    NormalizedUserName = "ADMIN@PATORESTAURANT.COM",
+                    Email = "admin@patorestaurant.com",
+                    NormalizedEmail = "ADMIN@PATORESTAURANT.COM",
+                    EmailConfirmed = true,
+                    PasswordHash = hash.HashPassword(null, "123456"),
+                    SecurityStamp = hash.GetHashCode().ToString(),
+                    ProfilePicture = @"\img\avatar.png"
+                }
+        );
+
+        builder.Entity<IdentityUserRole<string>>().HasData(
+            new IdentityUserRole<string>()
+            {
+                UserId = userId,
+                RoleId = listRoles[0].Id
+            }
+        );
+        
+        #endregion
 
         #region Seed StatusReservation
         List<StatusReservation> listStatusReservation = new()

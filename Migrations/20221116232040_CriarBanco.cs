@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PatoRestaurant.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class CriarBanco : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -38,9 +38,7 @@ namespace PatoRestaurant.Migrations
                 {
                     Id = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Discriminator = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Name = table.Column<string>(type: "varchar(60)", maxLength: 60, nullable: true)
+                    Name = table.Column<string>(type: "varchar(60)", maxLength: 60, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ProfilePicture = table.Column<string>(type: "varchar(400)", maxLength: 400, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -315,6 +313,20 @@ namespace PatoRestaurant.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { "1089ab62-76c8-4115-b716-2e34bef2be8d", "a34b0499-de68-4c06-af94-56b2245accc7", "Usuário", "USUÁRIO" },
+                    { "cd6267db-7e74-4b26-8494-4362a27cef11", "44f4a954-b9e5-495e-aea1-40aff342dbed", "Administrador", "ADMINISTRADOR" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "ProfilePicture", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "4cbae6f0-ccf1-42c5-a500-9a1e95d8e65d", 0, "e238a216-2c0e-4a53-a3b8-9ddc399c0876", "admin@patorestaurant.com", true, false, null, "Matheus Correa", "ADMIN@PATORESTAURANT.COM", "ADMIN@PATORESTAURANT.COM", "AQAAAAEAACcQAAAAEDYJPqGZfDZ/uYhsl3QrTdtrIibzYPXRh59dBaPLqZo/qtEsu0Q6Yl8kEk+XIVjtog==", null, false, "\\img\\avatar.png", "28926407", false, "admin@patorestaurant.com" });
+
+            migrationBuilder.InsertData(
                 table: "Category",
                 columns: new[] { "Id", "Banner", "Image", "Name" },
                 values: new object[,]
@@ -337,6 +349,11 @@ namespace PatoRestaurant.Migrations
                     { (byte)3, "Reserva Cancelada" },
                     { (byte)4, "Reserva Reagendada" }
                 });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[] { "cd6267db-7e74-4b26-8494-4362a27cef11", "4cbae6f0-ccf1-42c5-a500-9a1e95d8e65d" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

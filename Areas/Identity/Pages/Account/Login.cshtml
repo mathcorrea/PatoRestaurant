@@ -139,10 +139,11 @@
       mensagemErro += $(this).text()
     });
     if (mensagemErro != '') {
+      $("#Input_Email").focus();
       Swal.fire({
     icon: 'error',
     title: 'Problemas ao Entrar',
-    text: mensagemErro,
+    text: mensagemErro
 })
     }
   </script>
