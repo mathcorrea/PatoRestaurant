@@ -1,3 +1,4 @@
+// sweet alert
 function Delete(url){
     Swal.fire({
         title: 'Confirma a Exclusão?',

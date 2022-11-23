@@ -1,7 +1,5 @@
-@model IEnumerable<PatoRestaurant.Models.Product>
-
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Produtos";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
@@ -10,57 +8,26 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table id="tblData" class="table" style="width:100%">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                Nome
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                Categoria
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Price)
+                Preço
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Image)
-            </th>
-            <th></th>
+            <th>Ações</th>
         </tr>
     </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
+    
 </table>
+
+<!-- local para usar codigo javascript -->
+@section Scripts {
+    <script src="~/assets/js/delete.js"></script>
+    <script src="~/assets/js/product.js"></script>
+}

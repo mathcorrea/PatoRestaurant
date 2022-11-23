@@ -20,10 +20,16 @@ namespace PatoRestaurant.Controllers
         }
 
         // GET: Product
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var applicationDbContext = _context.Products.Include(p => p.Category);
-            return View(await applicationDbContext.ToListAsync());
+            return View();
+        }
+
+        // GET: Product/GetAll
+        public async Task<IActionResult> GetAll()
+        {
+            var products = await _context.Products.Include(p => p.Category).ToListAsync();
+            return Json(new { data = products });
         }
 
         // GET: Product/Details/5
