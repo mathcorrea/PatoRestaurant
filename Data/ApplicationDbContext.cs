@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using PatoRestaurant.Models;
 
 namespace PatoRestaurant.Data;
 
@@ -132,6 +133,8 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
         builder.Entity<Category>().HasData(listCategory);
         #endregion
     }
+
+    public DbSet<PatoRestaurant.Models.SocialEvent> SocialEvent { get; set; }
 
     
 }
